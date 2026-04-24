@@ -1,17 +1,3 @@
-<!-- <!DOCTYPE html> -->
-<!-- <html> -->
-<!-- <head> -->
-<!--   <meta charset="UTF-8"> -->
-<!--   <title>Under Construction</title> -->
-<!--   <style> -->
-<!--     body { font-family: sans-serif; text-align: center; padding: 80px; } -->
-<!--   </style> -->
-<!-- </head> -->
-<!-- <body> -->
-<!--   <h1>🚧 Welcome to Three Tree Ceramics! Site Under Construction 🚧</h1> -->
-<!--   <p>Check back soon!</p> -->
-<!-- </body> -->
-<!-- </html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,13 +22,13 @@
         }
 
         .main-image {
-            width: 66%;
+            width: 45%;
             margin: 20px auto;
             display: block;
         }
 
         .secondary-image {
-            width: 40%;
+            width: 25%;
             margin: 30px auto;
             display: block;
         }
@@ -71,6 +57,36 @@
             font-size: 0.9em;
             color: #555;
         }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .lightbox:target {
+            display: block;
+        }
+
+        /* Clickable background */
+        .lightbox-bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        /* Image */
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85%;
+            cursor: default;
+        }
     </style>
 </head>
 <body>
@@ -83,19 +99,65 @@
     <!-- Secondary Image -->
     <img src="threetreeinfo.png" alt="Three Tree Info" class="secondary-image">
 
-    <!-- Thumbnail Grid -->
+    <!-- Thumbnails -->
     <div class="thumbnail-row">
-        <a href="image1.png"><img src="thumb1.png" alt=""></a>
-        <a href="image2.png"><img src="thumb2.png" alt=""></a>
-        <a href="image3.png"><img src="thumb3.png" alt=""></a>
-        <a href="image4.png"><img src="thumb4.png" alt=""></a>
-        <a href="image5.png"><img src="thumb5.png" alt=""></a>
-        <a href="image6.png"><img src="thumb6.png" alt=""></a>
+        <a href="#img1"><img src="bowl01_thumb.jpeg" alt=""></a>
+        <a href="#img2"><img src="bowl02_thumb.jpeg" alt=""></a>
+        <a href="#img3"><img src="mug02_thumb.jpeg" alt=""></a>
+        <a href="#img4"><img src="mug03_thumb.jpeg" alt=""></a>
+        <a href="#img5"><img src="vase02_thumb.jpeg" alt=""></a>
+        <a href="#img6"><img src="vase04_thumb.jpeg" alt=""></a>
+    </div>
+
+    <!-- Lightboxes -->
+    <div id="img1" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="bowl01.jpeg" class="lightbox-content">
+        </a>
+    </div>
+
+    <div id="img2" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="bowl02.jpeg" class="lightbox-content">
+        </a>
+    </div>
+
+    <div id="img3" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="mug02.jpeg" class="lightbox-content">
+        </a>
+    </div>
+
+    <div id="img4" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="mug03.jpeg" class="lightbox-content">
+        </a>
+    </div>
+
+    <div id="img5" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="vase02.jpeg" class="lightbox-content">
+        </a>
+    </div>
+
+    <div id="img6" class="lightbox">
+        <a href="#" class="lightbox-bg">
+            <img src="vase04.jpeg" class="lightbox-content">
+        </a>
     </div>
 
     <footer>
         Copyright Three Tree Ceramics, 2026
     </footer>
+
+    <!-- Prevent image click from closing -->
+    <script>
+        document.querySelectorAll('.lightbox-content').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 
 </body>
 </html>
